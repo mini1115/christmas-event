@@ -20,4 +20,10 @@ public class Calculate {
     public int getDishPrice(String dish) {
         return MENU.getMenuPrice(dish).getPrice();
     }
+    public MENU hasChampagne(int sum) {
+        if (sum >= FREE_CHAMPAGNE_LIMIT) {
+            return MENU.CHAMPAGNE;
+        }
+        return MENU.EMPTY;
+    }
 }
