@@ -41,4 +41,18 @@ public class CalculateTest {
         assertThat(expect).isEqualTo((new Calculate().hasChampagne(total_money)).getName());
     }
 
+    @Test
+    void 평일_디저트_메뉴_확인() {
+        String input = "바비큐립-1,초코케이크-2,제로콜라-1";
+        int expect_price= 2023*2;
+        Map<String, String> menu = inputViewer.parseMenu(input);
+        assertThat(expect_price).isEqualTo(new Calculate().weekdayDiscount(menu));
+    }
+    @Test
+    void 주말_메인_메뉴_확인() {
+        String input = "티본스테이크-4,바비큐립-1,초코케이크-2,제로콜라-1";
+        int expect_price= 2023*5;
+        Map<String, String> menu = inputViewer.parseMenu(input);
+        assertThat(expect_price).isEqualTo(new Calculate().weekendDiscount(menu));
+    }
 }
