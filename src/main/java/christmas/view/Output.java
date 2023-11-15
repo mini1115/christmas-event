@@ -96,17 +96,17 @@ public class Output {
     }
 
     public void showDiscountMoney(int money) {
-        System.out.println("<총혜택 금액>\n" + df.format(money * -1) + "원");
+        System.out.println("\n<총혜택 금액>\n" + df.format(money * -1) + "원");
     }
 
     public void printAfterDiscountMoney(int sum, int money) {
-        System.out.println("<할인 후 예상 결제 금액>\n" +
+        System.out.println("\n<할인 후 예상 결제 금액>\n" +
                 df.format(sum - money + calculate.hasChampagne(sum).getPrice()) + "원");
     }
 
     public void showBadge(int money) {
         String badge = BADGE.getBadge(money, money).getGrade();
-        System.out.println("<12월 이벤트 배지>\n" + badge);
+        System.out.println("\n<12월 이벤트 배지>\n" + badge);
     }
 
     public String freeChampaign(int discount) {
