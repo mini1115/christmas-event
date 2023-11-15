@@ -22,4 +22,11 @@ public class ErrorValidate {
             }
         }
     }
+    public static void MenuNumZero(Map<String, String> menu) {
+        for (String key : menu.keySet()) {
+            if (menu.get(key).equals("0")) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
