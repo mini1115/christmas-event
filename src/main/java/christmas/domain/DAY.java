@@ -9,18 +9,13 @@ public enum DAY {
     //    CHRIRSTMAS(Arrays.asList(25),"크리스마스"),
     OTHER(Arrays.asList(0), "평일");
 
-    private List<Integer> days;
-    private String dayName;
+    private final List<Integer> days;
+    private final String dayName;
 
     DAY(List<Integer> days, String dayName) {
         this.days = days;
         this.dayName = dayName;
     }
-
-    public List<Integer> getDays() {
-        return this.days;
-    }
-
     public String getDayName() {
         return this.dayName;
     }
