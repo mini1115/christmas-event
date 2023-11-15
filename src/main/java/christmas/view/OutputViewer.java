@@ -7,7 +7,7 @@ import christmas.service.Figure;
 import java.text.DecimalFormat;
 import java.util.Map;
 
-public class Output {
+public class OutputViewer {
     DecimalFormat df = new DecimalFormat("###,###");
     Figure figure = new Figure();
     Calculate calculate = new Calculate();
