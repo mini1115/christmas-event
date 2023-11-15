@@ -1,7 +1,6 @@
 package christmas.view;
 
 import christmas.domain.BADGE;
-import christmas.domain.MENU;
 import christmas.service.Calculate;
 import christmas.service.Figure;
 

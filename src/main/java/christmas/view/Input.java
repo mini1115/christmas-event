@@ -3,9 +3,6 @@ package christmas.view;
 import camp.nextstep.edu.missionutils.Console;
 import christmas.error.ErrorMessage;
 import christmas.error.ErrorValidate;
-
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -26,7 +23,7 @@ public class Input {
     public static Map<String, String> readMenu() {
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
         String input = Console.readLine();
-        Map<String, String> orderMenu = new LinkedHashMap<>();
+        Map<String, String> orderMenu;
         try {
             orderMenu = parseMenu(input);
             ErrorValidate.hasMenu(orderMenu);

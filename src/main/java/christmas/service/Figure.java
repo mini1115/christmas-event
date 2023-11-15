@@ -5,9 +5,9 @@ import christmas.domain.DAY;
 public class Figure {
     private static final int CHRISTMAS_DAY = 25;
 
-    public String figureDay(int day) {
-        return DAY.getDayName(day);
-    }
+//    public String figureDay(int day) {
+//        return DAY.getDayName(day);
+//    }
 
     public boolean beforeChristmas(int day) {
         return (CHRISTMAS_DAY >= day);
