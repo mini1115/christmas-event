@@ -23,6 +23,7 @@ public class Output {
         showFreeChampagne(sum);
         showDiscountMoney(discount);
         printAfterDiscountMoney(sum, discount);
+        showBadge(discount);
     }
 
     public void printMenu(Map<String, String> menu) {
@@ -103,8 +104,14 @@ public class Output {
         System.out.println("<할인 후 예상 결제 금액>\n" +
                 df.format(sum - money + calculate.hasChampagne(sum).getPrice()) + "원");
     }
-    public String freeChampaign(int sum) {
-        if (showFreeChampagne(sum)) {
+
+    public void showBadge(int money) {
+        String badge = BADGE.getBadge(money, money).getGrade();
+        System.out.println("<12월 이벤트 배지>\n" + badge);
+    }
+
+    public String freeChampaign(int discount) {
+        if (showFreeChampagne(discount)) {
             return "샴페인 1개";
         }
         return "없음";
