@@ -38,4 +38,16 @@ public class ErrorValidate {
             throw new IllegalArgumentException();
         }
     }
+    public static void onlyBeverageMenu(Map<String, String> menu) {
+        boolean result = true;
+        for (String key : menu.keySet()) {
+            if (!MENUKIND.getDiscountMenu(key).getKind().equals("음료메뉴"))
+                result = false;
+            break;
+        }
+        if (result) {
+            throw new IllegalArgumentException();
+        }
+
+    }
 }
