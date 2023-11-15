@@ -19,6 +19,7 @@ public enum MENU {
     private final String name;
     private final int price;
 
+
     MENU(String name, int price) {
         this.name = name;
         this.price = price;
