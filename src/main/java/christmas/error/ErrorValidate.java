@@ -29,4 +29,13 @@ public class ErrorValidate {
             }
         }
     }
+    public static void MaxOrderMenu(Map<String, String> menu) {
+        int sum = 0;
+        for (String key : menu.keySet()) {
+            sum += Integer.parseInt(menu.get(key));
+        }
+        if (sum > 20) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
