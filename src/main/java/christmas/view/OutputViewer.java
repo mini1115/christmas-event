@@ -12,6 +12,9 @@ public class OutputViewer {
     Figure figure = new Figure();
     Calculate calculate = new Calculate();
     private static int total_discount = 0;
+    private static final int SPECIAL_DAY_DISCOUNT = 1000;
+    private static final int MIN_DISCOUNT_STANDARD = 10_000;
+
 
     public void showAll(Map<String, String> menu, int sum, int day) {
         System.out.println("12월 " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n");
@@ -42,7 +45,7 @@ public class OutputViewer {
 
     public int showAllDiscount(Map<String, String> menu, int sum, int day) {
         System.out.println("\n<혜택 내역>");
-        if (sum < 10000) {
+        if (sum < MIN_DISCOUNT_STANDARD) {
             System.out.println("없음");
             return total_discount;
         }
@@ -85,8 +88,8 @@ public class OutputViewer {
 
     public void showSpecial(int day) {
         if (figure.specialDayOrNot(day)) {
-            total_discount += 1000;
-            System.out.println("특별 할인: -" + df.format(1000) + "원");
+            total_discount += SPECIAL_DAY_DISCOUNT;
+            System.out.println("특별 할인: -" + df.format(SPECIAL_DAY_DISCOUNT) + "원");
         }
     }
 

@@ -8,6 +8,7 @@ import java.util.Map;
 public class Calculate {
     private static final int DISCOUNT_MENU = 2023;
     private static final int FREE_CHAMPAGNE_LIMIT = 120_000;
+    private static final int SPECIAL_DAY_DISCOUNT = 1000;
 
     public int totalPrice(Map<String, String> menu) {
         int sum = 0;
@@ -43,7 +44,7 @@ public class Calculate {
 
     public int christmasDiscount(int day) {
         int discount = 0;
-        discount = (day - 1) * 100 + 1000;
+        discount = (day - 1) * 100 + SPECIAL_DAY_DISCOUNT;
         //total+=discount;
         return discount;
     }
