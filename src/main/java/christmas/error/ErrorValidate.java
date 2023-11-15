@@ -15,6 +15,7 @@ public class ErrorValidate {
             throw new IllegalArgumentException();
         }
     }
+
     public static void hasMenu(Map<String, String> menu) {
         for (String key : menu.keySet()) {
             if (MENU.getMenuPrice(key).getName().equals("없는메뉴")) {
@@ -22,6 +23,7 @@ public class ErrorValidate {
             }
         }
     }
+
     public static void MenuNumZero(Map<String, String> menu) {
         for (String key : menu.keySet()) {
             if (menu.get(key).equals("0")) {
@@ -29,6 +31,7 @@ public class ErrorValidate {
             }
         }
     }
+
     public static void MaxOrderMenu(Map<String, String> menu) {
         int sum = 0;
         for (String key : menu.keySet()) {
@@ -38,10 +41,11 @@ public class ErrorValidate {
             throw new IllegalArgumentException();
         }
     }
+
     public static void onlyBeverageMenu(Map<String, String> menu) {
         boolean result = true;
         for (String key : menu.keySet()) {
-            if (!MENUKIND.getDiscountMenu(key).getKind().equals("음료메뉴"))
+            if (!MENUKIND.getDiscountMenu(key).getKind().contains("음료"))
                 result = false;
             break;
         }
