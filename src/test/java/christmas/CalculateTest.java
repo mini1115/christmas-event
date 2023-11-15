@@ -3,12 +3,15 @@ package christmas;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import christmas.domain.BADGE;
+import christmas.domain.MENU;
 import christmas.service.Calculate;
 import christmas.view.InputViewer;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Base64;
+import java.util.Map;
 
 public class CalculateTest {
     InputViewer inputViewer = new InputViewer();
@@ -29,6 +32,13 @@ public class CalculateTest {
         String expectBadge = "트리";
         String badge = BADGE.getBadge(discountPrice, discountPrice).getGrade();
         assertThat(badge).isEqualTo(expectBadge);
+    }
+
+    @Test
+    void 샴페인_증정_유무() {
+        int total_money = 12_0000;
+        String expect = MENU.CHAMPAGNE.getName();
+        assertThat(expect).isEqualTo((new Calculate().hasChampagne(total_money)).getName());
     }
 
 }
