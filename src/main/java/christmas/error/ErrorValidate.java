@@ -15,4 +15,11 @@ public class ErrorValidate {
             throw new IllegalArgumentException();
         }
     }
+    public static void hasMenu(Map<String, String> menu) {
+        for (String key : menu.keySet()) {
+            if (MENU.getMenuPrice(key).getName().equals("없는메뉴")) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
