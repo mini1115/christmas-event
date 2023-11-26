@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.domain.BADGE;
+import christmas.domain.MENU;
 import christmas.service.Calculate;
 import christmas.service.Figure;
 
@@ -22,7 +23,6 @@ public class OutputViewer {
         printBeforeDiscountMoney(sum);
         int discount = showAllDiscount(menu, sum, day);
         discount += calculate.hasChampagne(sum).getPrice();
-        showFreeChampagne(sum);
         showDiscountMoney(discount);
         printAfterDiscountMoney(sum, discount);
         showBadge(discount);
@@ -53,8 +53,8 @@ public class OutputViewer {
         showWeekend(day, menu);
         showWeekday(day, menu);
         showSpecial(day);
-        if (showFreeChampagne(sum)) {
-            System.out.println("증정 이벤트: -25,000원");
+        if (calculate.hasChampagne(sum).equals(MENU.CHAMPAGNE)) {
+            System.out.println("\n증정 이벤트: -25,000원");
         }
         return total_discount;
     }
@@ -63,7 +63,7 @@ public class OutputViewer {
         int discount = 0;
         if (figure.beforeChristmas(day)) {
             discount = calculate.christmasDiscount(day);
-            System.out.println("크리스마스 디데이 할인: -" + df.format(discount) + "원");
+            System.out.printf("\n크리스마스 디데이 할인: -%s원",df.format(discount));
         }
         total_discount += discount;
     }
@@ -72,7 +72,7 @@ public class OutputViewer {
         int discount = 0;
         if (figure.weekendOrNot(day)) {
             discount += calculate.weekendDiscount(menu);
-            System.out.println("주말 할인: -" + df.format(discount) + "원");
+            System.out.printf("\n주말 할인: -%s원",df.format(discount));
         }
         total_discount += discount;
     }
@@ -81,7 +81,7 @@ public class OutputViewer {
         int discount = 0;
         if (!figure.weekendOrNot(day)) {
             discount += calculate.weekdayDiscount(menu);
-            System.out.println("평일 할인: -" + df.format(discount) + "원");
+            System.out.printf("\n평일 할인: -%s원",df.format(discount));
         }
         total_discount += discount;
     }
@@ -89,22 +89,21 @@ public class OutputViewer {
     public void showSpecial(int day) {
         if (figure.specialDayOrNot(day)) {
             total_discount += SPECIAL_DAY_DISCOUNT;
-            System.out.println("특별 할인: -" + df.format(SPECIAL_DAY_DISCOUNT) + "원");
+            System.out.printf("\n특별 할인: -%s원",df.format(SPECIAL_DAY_DISCOUNT));
         }
     }
 
-    public boolean showFreeChampagne(int sum) {
-        return (calculate.hasChampagne(sum).getPrice() != 0);
-
-    }
+//    public boolean showFreeChampagne(int sum) {
+//        return (calculate.hasChampagne(sum).getPrice() != 0);
+//
+//    }
 
     public void showDiscountMoney(int money) {
         System.out.println("\n<총혜택 금액>\n" + df.format(money * -1) + "원");
     }
 
     public void printAfterDiscountMoney(int sum, int money) {
-        System.out.println("\n<할인 후 예상 결제 금액>\n" +
-                df.format(sum - money + calculate.hasChampagne(sum).getPrice()) + "원");
+        System.out.printf("\n<할인 후 예상 결제 금액>\n%s원",df.format(sum - money + calculate.hasChampagne(sum).getPrice()));
     }
 
     public void showBadge(int money) {
@@ -112,8 +111,8 @@ public class OutputViewer {
         System.out.println("\n<12월 이벤트 배지>\n" + badge);
     }
 
-    public String freeChampaign(int discount) {
-        if (showFreeChampagne(discount)) {
+    public String freeChampaign(int sum) {
+        if (calculate.hasChampagne(sum).getPrice() != 0) {
             return "샴페인 1개";
         }
         return "없음";
